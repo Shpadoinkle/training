@@ -1,0 +1,57 @@
+{
+  "name": "timer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@material-ui/core": "^4.10.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "glamor": "^2.20.40",
+    "localforage": "^1.7.3",
+    "mobx": "^5.15.4",
+    "mobx-persist": "^0.4.1",
+    "mobx-react": "^6.2.2",
+    "pretty-ms": "^7.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.8",
+    "react-infinite-scroller": "^1.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-toastify": "^5.5.0",
+    "semantic-ui-react": "^0.88.2",
+    "styled-components": "^5.1.0",
+    "typeface-roboto": "^0.0.75",
+    "typeface-work-sans": "^0.0.72",
+    "uuid": "^8.1.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "customize-cra": "^0.9.1",
+    "react-app-rewired": "^2.1.6"
+  }
+}
