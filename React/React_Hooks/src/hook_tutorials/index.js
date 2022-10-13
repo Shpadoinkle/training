@@ -7,6 +7,7 @@ import ImperativeHandle from "./06_ImperativeHandle";
 import UseContext from "./07_UseContext";
 import UseMemo from "./08_UseMemo";
 import UseCallback from "./09_UseCallback";
+import CustomHooks from "./10_CustomHooks";
 
 /**
  *
@@ -24,4 +25,5 @@ export default [
   { name: 'UseContext', page: UseContext },
   { name: 'UseMemo', page: UseMemo },
   { name: 'UseCallback', page: UseCallback },
+  { name: 'CustomHooks', page: CustomHooks },
 ];
