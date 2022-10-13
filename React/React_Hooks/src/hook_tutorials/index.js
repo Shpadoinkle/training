@@ -13,14 +13,15 @@ import UseCallback from "./09_UseCallback";
  * These tutorials:
  * https://www.youtube.com/watch?v=LlvBzyy-558
  */
-export {
-  UseState,
-  UseReducer,
-  UseEffect,
-  UseRef,
-  UseLayoutEffect,
-  ImperativeHandle,
-  UseContext,
-  UseMemo,
-  UseCallback,
-};
+
+export default [
+  { name: 'UseState', page: UseState },
+  { name: 'UseReducer', page: UseReducer },
+  { name: 'UseEffect', page: UseEffect },
+  { name: 'UseRef', page: UseRef },
+  { name: 'UseLayoutEffect', page: UseLayoutEffect },
+  { name: 'ImperativeHandle', page: ImperativeHandle },
+  { name: 'UseContext', page: UseContext },
+  { name: 'UseMemo', page: UseMemo },
+  { name: 'UseCallback', page: UseCallback },
+];
