@@ -3,6 +3,8 @@ In this repo, the package is created.
 
 ### Training material used
 - https://dev.to/alexeagleson/how-to-create-and-publish-a-react-component-library-2oe
+  - Note: Refer to his git repo source code.  So much will fail if not using the exact package versions he uses.  
+  - Note: use NPM as well.. so many issues using yarn that i couldnt be bothered trying to figure out.
 
 ### Npm deployment requirements
 - a local `~/.npmrc` file.
