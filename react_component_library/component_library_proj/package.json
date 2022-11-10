@@ -1,5 +1,8 @@
 {
-  "name": "ash_component_library_testing",
+  "name": "@Shpadoinkle/test_component_library_proj",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Shpadoinkle"
+  },
   "version": "0.0.1",
   "description": "Testing - Create a component library",
   "main__Original": "index.js",
