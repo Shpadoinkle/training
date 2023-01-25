@@ -13,6 +13,7 @@
 //   <h2>{props.animal}</h2>
 //   <h2>{props.breed}</h2>
 // </div>
+
 import { Link } from "react-router-dom";
 
 const Pet = ({ name, animal, breed, images, location, id }) => {

@@ -1,9 +1,11 @@
 // import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import AdoptedPetContext from "./AdoptedPetContext";
 import Details from "./Details";
 import SearchParams from "./SearchParams";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Could use multiple clients if need different caches.. no real reason to do this though
 const queryClient = new QueryClient({
@@ -17,16 +19,20 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+  // const [user, setUser] = useState(null); -- use a context instead
+  const adoptedPet = useState(null); // Passing entire hook, ie- read and write functions
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <header>
-          <Link to="/">Adopt Me!</Link>
-        </header>
-        <Routes>
-          <Route path="/details/:id" element={<Details />} />
-          <Route path="/" element={<SearchParams />} />
-        </Routes>
+        <AdoptedPetContext.Provider value={adoptedPet}>
+          <header>
+            <Link to="/">Adopt Me!</Link>
+          </header>
+          <Routes>
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/" element={<SearchParams />} />
+          </Routes>
+        </AdoptedPetContext.Provider>
       </QueryClientProvider>
     </BrowserRouter>
   );
