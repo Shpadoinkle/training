@@ -5,12 +5,19 @@ import { EcrRepository } from './constructs/ecr-repository';
 import { RdsPostgres } from './constructs/rds-postgres';
 import { Ec2Instance } from './constructs/ec2-instance';
 import { GitHubActionsOidc } from './constructs/github-actions-oidc';
+import { Monitoring } from './constructs/monitoring';
 
 interface AiPlayStackProps extends cdk.StackProps {
   /** GitHub owner (org or username) — used to scope the OIDC deploy role trust policy. */
   githubOwner: string;
   /** GitHub repository name — used to scope the OIDC deploy role trust policy. */
   githubRepo: string;
+  /**
+   * Email address to receive CloudWatch alarm notifications via SNS.
+   * Optional — alarms are created regardless, but no emails are sent if omitted.
+   * AWS will send a subscription confirmation email that must be accepted first.
+   */
+  alarmEmail?: string;
 }
 
 /**
@@ -38,7 +45,7 @@ export class AiPlayStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: AiPlayStackProps) {
     super(scope, id, props);
 
-    const { githubOwner, githubRepo } = props;
+    const { githubOwner, githubRepo, alarmEmail } = props;
 
     // Set up OIDC provider and deploy role so GitHub Actions can authenticate
     // with AWS without storing long-lived credentials as secrets.
@@ -61,11 +68,19 @@ export class AiPlayStack extends cdk.Stack {
 
     // Launch the EC2 instance in the public subnet. The construct grants the
     // instance role pull access to ECR and read access to the RDS secret.
-    new Ec2Instance(this, 'Ec2', {
+    const ec2 = new Ec2Instance(this, 'Ec2', {
       vpc: network.vpc,
       securityGroup: network.ec2SecurityGroup,
       ecrRepository: ecr.repository,
       dbSecret: rds.credentials,
+    });
+
+    // Provision CloudWatch alarms for EC2 and RDS, with an SNS topic for
+    // notifications. Alarms fire regardless of whether alarmEmail is set.
+    new Monitoring(this, 'Monitoring', {
+      ec2Instance: ec2.instance,
+      rdsInstance: rds.instance,
+      alarmEmail,
     });
   }
 }

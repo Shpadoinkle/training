@@ -45,4 +45,7 @@ new AiPlayStack(app, 'AiPlayStack', {
   // Update these to match your GitHub org/username and repository name.
   githubOwner: process.env.GITHUB_OWNER ?? 'YOUR_GITHUB_OWNER',
   githubRepo: process.env.GITHUB_REPO ?? 'YOUR_GITHUB_REPO',
+  // Optional: set ALARM_EMAIL to receive CloudWatch alarm notifications by email.
+  // AWS sends a confirmation email on first deploy — you must accept it to activate alerts.
+  alarmEmail: process.env.ALARM_EMAIL,
 });
