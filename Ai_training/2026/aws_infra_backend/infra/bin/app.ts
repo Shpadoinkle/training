@@ -42,4 +42,7 @@ new AiPlayStack(app, 'AiPlayStack', {
     region: process.env.CDK_DEFAULT_REGION ?? 'us-east-1',
   },
   description: 'AI Play backend infrastructure: ECR, EC2, and RDS PostgreSQL',
+  // Update these to match your GitHub org/username and repository name.
+  githubOwner: process.env.GITHUB_OWNER ?? 'YOUR_GITHUB_OWNER',
+  githubRepo: process.env.GITHUB_REPO ?? 'YOUR_GITHUB_REPO',
 });

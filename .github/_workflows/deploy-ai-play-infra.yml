@@ -1,0 +1,52 @@
+# name: Deploy CDK Stack
+
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'Ai_training/2026/aws_infra_backend/infra/**'
+#   workflow_dispatch:
+
+# jobs:
+#   deploy:
+#     name: Deploy AiPlayStack
+#     runs-on: ubuntu-latest
+#     permissions:
+#       id-token: write
+#       contents: read
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+#           cache: 'npm'
+#           cache-dependency-path: Ai_training/2026/aws_infra_backend/infra/package-lock.json
+
+#       - name: Configure AWS credentials (OIDC)
+#         uses: aws-actions/configure-aws-credentials@v4
+#         with:
+#           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsDeployRole
+#           aws-region: us-east-1
+
+#       - name: Install dependencies
+#         working-directory: Ai_training/2026/aws_infra_backend/infra
+#         run: npm ci
+
+#       - name: CDK Synth (validate)
+#         working-directory: Ai_training/2026/aws_infra_backend/infra
+#         run: npx cdk synth
+#         env:
+#           CDK_DEFAULT_ACCOUNT: ${{ secrets.AWS_ACCOUNT_ID }}
+#           CDK_DEFAULT_REGION: us-east-1
+
+#       - name: CDK Deploy
+#         working-directory: Ai_training/2026/aws_infra_backend/infra
+#         run: npx cdk deploy --require-approval never
+#         env:
+#           CDK_DEFAULT_ACCOUNT: ${{ secrets.AWS_ACCOUNT_ID }}
+#           CDK_DEFAULT_REGION: us-east-1
