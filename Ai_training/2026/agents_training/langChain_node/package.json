@@ -1,0 +1,17 @@
+{
+  "name": "langchain-node",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types index.ts",
+    "dev": "node --watch --experimental-strip-types index.ts"
+  },
+  "dependencies": {
+    "@langchain/ollama": "^0.2.0",
+    "@langchain/core": "^0.3.0",
+    "langchain": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  }
+}

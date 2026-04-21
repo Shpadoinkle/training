@@ -1,0 +1,15 @@
+{
+  "name": "multi-agent-sdk",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types index.ts",
+    "dev": "node --watch --experimental-strip-types index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.0.14"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  }
+}
